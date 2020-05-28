@@ -1,5 +1,6 @@
 /******
 *    Implementação dos algoritmos de Ordenção por Seleção e Inserção
+* 	@Lariza Laura de Oliveira
 *
 ******/
 
