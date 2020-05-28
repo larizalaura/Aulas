@@ -6,54 +6,54 @@
 #include <iostream>
 using namespace std;
 
-class Graph {
+class Grafo {
    private:
-  bool** adjMatrix;
+  bool** adjMatriz;
   int numVertices;
 
    public:
-  // Initialize the matrix to zero
-  Graph(int numVertices) {
+  // Inicializa a matriz com zero
+  Grafo(int numVertices) {
     this->numVertices = numVertices;
-    adjMatrix = new bool*[numVertices];
+    adjMatriz = new bool*[numVertices];
     for (int i = 0; i < numVertices; i++) {
-      adjMatrix[i] = new bool[numVertices];
+      adjMatriz[i] = new bool[numVertices];
       for (int j = 0; j < numVertices; j++)
-        adjMatrix[i][j] = false;
+        adjMatriz[i][j] = false;
     }
   }
 
-  // Add edges
+  // Adiciona arestas
   void addEdge(int i, int j) {
-    adjMatrix[i][j] = true;
-    adjMatrix[j][i] = true;
+    adjMatriz[i][j] = true;
+    adjMatriz[j][i] = true;
   }
 
-  // Remove edges
+  // Remove as arestas
   void removeEdge(int i, int j) {
-    adjMatrix[i][j] = false;
-    adjMatrix[j][i] = false;
+    adjMatriz[i][j] = false;
+    adjMatriz[j][i] = false;
   }
 
-  // Print the martix
+  // Printa a matriz
   void toString() {
     for (int i = 0; i < numVertices; i++) {
       cout << i << " : ";
       for (int j = 0; j < numVertices; j++)
-        cout << adjMatrix[i][j] << " ";
+        cout << adjMatriz[i][j] << " ";
       cout << "\n";
     }
   }
 
-  ~Graph() {
+  ~Grafo() {
     for (int i = 0; i < numVertices; i++)
-      delete[] adjMatrix[i];
-    delete[] adjMatrix;
+      delete[] adjMatriz[i];
+    delete[] adjMatriz;
   }
 };
 
 int main() {
-  Graph g(4);
+  Grafo g(4);
 
   g.addEdge(0, 1);
   g.addEdge(0, 2);
@@ -63,4 +63,3 @@ int main() {
 
   g.toString();
 }
-
