@@ -108,26 +108,7 @@ void Grafo::callBFS(int v){
 	BFS(v, visited);
 }
 
-int Grafo::getConnected(){
-	//marcar os componentes conexos de G, que tem n> = 1
-	int visited[numVertices];
-	int num_comp = 0;
 
-		for(int i=0; i<numVertices; i++){
-			visited[i] = 0;
-		}
-
-		for(int i=0; i<numVertices; i++){
-			if(visited[i] ==0){
-				BFS(i, visited);
-				num_comp++;
-				cout<< "entrou" <<endl;
-			}
-
-
-		}
-	return num_comp;
-}
 int Grafo::countEdges(int** adjMatrizTemp){
 	int count = 0;
 	for(int i=0; i<numVertices; i++){
