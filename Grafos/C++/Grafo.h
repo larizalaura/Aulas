@@ -6,7 +6,7 @@ using namespace std;
 #ifndef Grafo_H
 #define Grafo_H
 
-typedef int GrafoEntry;
+#define INF 100000
 
 class Grafo{
 	public:
@@ -22,18 +22,24 @@ class Grafo{
 	    int distance(int v, int w);
 	    int degree(int v);
 
-	    void addEdge(int i, int j);
-	    void removeEdge(int i, int j);
+	    void addEdge(int i, int j, int value);
+	    void removeEdge(int i, int j, int value);
 
 	    void toString();
 
 	    void callDFS(int v);
-	   // void callBFS(int v);
-	private:
-		bool** adjMatriz;
-		int numVertices;
+	    void callBFS(int v);
 
-		//void BFS(int v, int visited[]);
+	    int getConnected();
+	    void Kruskal();
+	    int countEdges(int** adjMatrizTemp);
+	    
+	private:
+		int** adjMatriz;
+		int numVertices;
+		int numArestas;
+
+		void BFS(int v, int visited[]);
 		void DFS(int v, int visited[]);
 };
 
