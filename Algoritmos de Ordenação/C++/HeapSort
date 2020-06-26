@@ -1,0 +1,64 @@
+// C++ program for implementation of Heap Sort 
+#include <iostream> 
+using namespace std; 
+  
+// transforma na estrutura de heap com raiz da subárvore em i 
+//arr é o array  e n é o tamanho do heap 
+void heapify(int arr[], int n, int i) { 
+    int largest = i; // raiz, procura pelo maior
+    int l = 2 * i + 1; // filho da esquerda = 2*i + 1 
+    int r = 2 * i + 2; // filho da direita = 2*i + 2 
+  
+  cout<< "raiz " << arr[i] << "filho l" << arr[l] << "  filho r " <<arr[r] <<endl;
+    //Se o filho da esquerda é maior que a raiz 
+    if (l < n && arr[l] > arr[largest]) 
+        largest = l; 
+
+   //Se o filho da direita é maior que a raiz  
+    if (r < n && arr[r] > arr[largest]) 
+        largest = r; 
+  
+    // Se o maior não é a raiz
+    if (largest != i) { 
+        swap(arr[i], arr[largest]); 
+  
+        // Transforme a subárvore em Heap
+        heapify(arr, n, largest); 
+    } 
+} 
+  
+//função principal heapSort
+void heapSort(int arr[], int n) { 
+    //Constroi um Heap rearranjando o vetor
+    for (int i = n / 2 - 1; i >= 0; i--) 
+        heapify(arr, n, i); 
+  
+    //Extrai um elemento do Heap
+    for (int i = n - 1; i >= 0; i--) { 
+        //Move para o final
+        swap(arr[0], arr[i]); 
+  
+        //chama o heapfy no heap reduzido
+        heapify(arr, i, 0); 
+    } 
+} 
+  
+/* A utility function to print array of size n */
+void printArray(int arr[], int n) 
+{ 
+    for (int i = 0; i < n; ++i) 
+        cout << arr[i] << " "; 
+    cout << "\n"; 
+} 
+  
+// Driver program 
+int main() 
+{ 
+    int arr[] = { 12, 11, 13, 5, 6, 7 }; 
+    int n = sizeof(arr) / sizeof(arr[0]); 
+  
+    heapSort(arr, n); 
+  
+    cout << "Sorted array is \n"; 
+    printArray(arr, n); 
+} 
